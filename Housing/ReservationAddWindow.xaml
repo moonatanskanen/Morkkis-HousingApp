@@ -1,0 +1,79 @@
+﻿<Window x:Class="HousingApp.ReservationAddWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HousingApp"
+        mc:Ignorable="d"
+        Title="Varauksen tiedot" Height="800" Width="500" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="362*"/>
+            <RowDefinition Height="269*"/>
+            <RowDefinition Height="118*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel>
+            <Menu Height="25" Background="#FF6CAF84">
+                <MenuItem Margin="0,2,0,0">
+                    <MenuItem.Header>
+                        <Image Source="/Invoices/hamburger_menu_picture.jpg" Opacity="0.8" Height="20"/>
+                    </MenuItem.Header>
+                    <MenuItem Header="Tiedot" Click="TiedotClick" FontFamily="Carlito" FontSize="16"/>
+                    <MenuItem Header="Apua" Click="ShowInfoMessage" FontFamily="Carlito" FontSize="16"/>
+                </MenuItem>
+            </Menu>
+        </StackPanel>
+
+        <!-- ASIAKASVALINTA -->
+
+        <Label Name="cMail" Content="Asiakkaan sähköposti" HorizontalAlignment="Center" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Top" FontFamily="Carlito" FontSize="16" FontWeight="Bold"/>
+        <TextBox x:Name="SearchBox" Grid.Row="1" Text="mikko.virtanen@gmail.com" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Margin="0,50,0,0" FontFamily="Carlito" FontSize="16" TextWrapping="Wrap" VerticalAlignment="Top" Width="285" Height="35" BorderBrush="#FF397352"/>
+        <Button Name="cFind" Grid.Row="1"  Content="Etsi asiakas" HorizontalAlignment="Left" Margin="123,100,0,0" VerticalAlignment="Top" FontFamily="Carlito" FontSize="16" Height="26" BorderBrush="#FF397352" Background="#FFD3ECDC" Click="FindCustomerByEmail" Width="109"/>
+        <Button Name="cNew" Grid.Row="1"  Content="Uusi asiakas" HorizontalAlignment="Left" Margin="262,100,0,0" VerticalAlignment="Top" FontFamily="Carlito" FontSize="16" Height="26" BorderBrush="#FF397352" Background="#FFD3ECDC" Width="111" Click="OpenNewCustomerWindow" />
+
+        <!-- ASIAKKAAN TIEDOT -->
+
+        <Rectangle HorizontalAlignment="Left" Height="165" Margin="7,165,0,0" Grid.Row="1" Stroke="#FF397352" VerticalAlignment="Top" Width="225"/>
+        <Label Content="Asiakastiedot" HorizontalAlignment="Left" Margin="10,135,0,0" Grid.Row="1" VerticalAlignment="Top" FontFamily="Carlito" FontSize="16" FontWeight="Bold"/>
+        <TextBox IsReadOnly="True" HorizontalAlignment="Left" Margin="15,175,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Customer.FirstName}" VerticalAlignment="Top" Width="210" Height="25" FontFamily="Carlito" FontSize="16"/>
+        <TextBox IsReadOnly="True" HorizontalAlignment="Left" Margin="15,205,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Customer.LastName}" VerticalAlignment="Top" Width="210" Height="25" FontFamily="Carlito" FontSize="16"/>
+        <TextBox IsReadOnly="True" HorizontalAlignment="Left" Margin="15,235,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Customer.Address}" VerticalAlignment="Top" Width="210" Height="25" FontFamily="Carlito" FontSize="16"/>
+        <TextBox IsReadOnly="True" HorizontalAlignment="Left" Margin="15,265,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Customer.Email}" VerticalAlignment="Top" Width="210" Height="25" FontFamily="Carlito" FontSize="16"/>
+        <TextBox IsReadOnly="True" HorizontalAlignment="Left" Margin="15,295,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Customer.Phone}" VerticalAlignment="Top" Width="210" Height="25" FontFamily="Carlito" FontSize="16"/>
+
+        <!-- MUUT TIEDOT -->
+
+        <Rectangle HorizontalAlignment="Right" Height="165" Margin="7,165,7,0" Grid.Row="1" Stroke="#FF397352" VerticalAlignment="Top" Width="225"/>
+        <Label Content="Varaustiedot" HorizontalAlignment="Left" Margin="275,135,10,0" Grid.Row="1" VerticalAlignment="Top" FontFamily="Carlito" FontSize="16" FontWeight="Bold"/>
+        <TextBox IsReadOnly="True" HorizontalAlignment="Right" Margin="15,175,15,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Cabin.Name}" VerticalAlignment="Top" Width="210" Height="25" FontFamily="Carlito" FontSize="16"/>
+        <Label Content="Aloituspäivä" HorizontalAlignment="Left" Margin="275,205,0,0" Grid.Row="1" VerticalAlignment="Top" FontFamily="Carlito" FontSize="16" FontWeight="Bold"/>
+        <TextBox IsReadOnly="True" HorizontalAlignment="Right" Margin="15,235,15,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding StartDate}" VerticalAlignment="Top" Width="210" Height="25" FontFamily="Carlito" FontSize="16"/>
+        <Label Content="Lopetuspäivä" HorizontalAlignment="Left" Margin="275,265,0,0" Grid.Row="1" VerticalAlignment="Top" FontFamily="Carlito" FontSize="16" FontWeight="Bold"/>
+        <TextBox IsReadOnly="True" HorizontalAlignment="Right" Margin="15,295,15,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding EndDate}" VerticalAlignment="Top" Width="210" Height="25" FontFamily="Carlito" FontSize="16"/>
+
+        <!-- TUOTEVALINTA -->
+        <StackPanel Grid.Row="2" Margin="0,0,0,0" Grid.RowSpan="2">
+            <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Services}" BorderBrush="Black" x:Name="DataRows" FontSize="16" FontFamily="Carlito" CanUserAddRows="False" CanUserDeleteRows="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn IsReadOnly="True" Width="*" Header="Tuote" Binding="{Binding Name}" CanUserResize="False"/>
+                    <DataGridTextColumn IsReadOnly="True" Width="60" Header="Määrä" Binding="{Binding Amount}" CanUserResize="False"/>
+                    <DataGridTextColumn IsReadOnly="True" Width="60" Header="à-Hinta" Binding="{Binding Price}" CanUserResize="False"/>
+                    <DataGridTextColumn IsReadOnly="True" Width="60" Header="Hinta" Binding="{Binding TotalPrice}" CanUserResize="False"/>
+                    <DataGridCheckBoxColumn Width="60" Header="Valitse" Binding="{Binding Delete}" CanUserResize="False"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Button Content="Poista valitut" Width="105" Margin="0,10,0,0" FontFamily="Carlito" FontSize="16" Height="26" BorderBrush="#FF397352" Background="#FFD3ECDC" Click="DeleteRows"/>
+            <Button Content="Lisää uusi" Width="105" Margin="0,10,0,0" FontFamily="Carlito" FontSize="16" Height="26" BorderBrush="#FF397352" Background="#FFD3ECDC" Click="AddNewRow" />
+        </StackPanel>
+
+        <Button Grid.Row="3" Content="Valmis" HorizontalAlignment="Left" Margin="268,77,0,0" VerticalAlignment="Top" Width="100" FontFamily="Carlito" FontSize="16" Height="26" BorderBrush="#FF397352" Background="#FFD3ECDC" Click="OpenReservationConfirmationWindow"/>
+        <Button Grid.Row="3" Content="Peruuta" HorizontalAlignment="Left" Margin="373,77,0,0" VerticalAlignment="Top" Width="100" FontFamily="Carlito" FontSize="16" Height="26" BorderBrush="#FF397352" Background="#FFD3ECDC" Click="DiscardAndClose"/>
+
+    </Grid>
+</Window>

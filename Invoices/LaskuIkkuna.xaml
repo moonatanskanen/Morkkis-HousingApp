@@ -1,0 +1,91 @@
+﻿<Window x:Class="HousingApp.LaskuIkkuna"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HousingApp"
+        xmlns:invoices="clr-namespace:HousingApp.Invoices"
+        mc:Ignorable="d"
+        Title="Lasku" Height="600" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Window.DataContext>
+        <invoices:Invoice/>
+    </Window.DataContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="304*"/>
+            <RowDefinition Height="239*"/>
+            <RowDefinition Height="41*"/>
+        </Grid.RowDefinitions>
+        
+        <!--menu-->
+        <StackPanel Grid.RowSpan="3">
+            <Menu Height="25" Background="#FF6CAF84">
+                <MenuItem Margin="0,2,0,0">
+                    <MenuItem.Header>
+                        <Image Source="/Invoices/hamburger_menu_picture.jpg" Opacity="0.8" Height="20"/>
+                    </MenuItem.Header>
+                    <MenuItem Header="Tiedot" Click="TiedotClick" FontFamily="Carlito" FontSize="16"/>
+                    <MenuItem Header="Poistu" Click="PoistuClick" FontFamily="Carlito" FontSize="16"/>
+                </MenuItem>
+            </Menu>
+        </StackPanel>
+        
+        <!--laskun tiedot-->
+        <GroupBox Header="LASKU" FontFamily="Carlito" FontSize="16" FontWeight="Bold" Margin="447,27,40,151">
+            <StackPanel Height="131">
+                <Label Content="ID" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="49" Grid.Row="1" FontWeight="Normal"/>
+                <Label Content="Päivämäärä" HorizontalAlignment="Left" Height="26" Width="88" Grid.Row="1" FontWeight="Normal" />
+                <Label Content="Eräpäivä" HorizontalAlignment="Left" Height="28" Width="74" Grid.Row="1" FontWeight="Normal"/>
+
+                <TextBox HorizontalAlignment="Left" Margin="110,-74,10,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding LaskuID}" VerticalAlignment="Top" Width="160" Height="20" FontWeight="Normal" IsReadOnly="True"/>
+                <TextBox HorizontalAlignment="Left" Margin="110,-47,10,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Paivamaara}" VerticalAlignment="Top" Width="160" Height="20" FontWeight="Normal" IsReadOnly="True"/>
+                <TextBox HorizontalAlignment="Left" Margin="110,-22,10,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Erapaiva}" VerticalAlignment="Top" Width="160" Height="20" FontWeight="Normal" IsReadOnly="True"/>
+            </StackPanel>
+        </GroupBox>
+
+         <!--varauksen tiedot-->
+        <GroupBox Header="VARAUS" FontWeight="Bold" Margin="36,27,451,151" FontFamily="Carlito" FontSize="16">
+            <StackPanel Height="131">
+                <Label Content="Toimipiste" HorizontalAlignment="Left" Height="30" Width="85" Grid.Row="1" FontWeight="Normal"/>
+                <Label Content="Mökki" HorizontalAlignment="Left" Height="26" Width="69" Grid.Row="1" FontWeight="Normal"/>
+
+                <TextBox HorizontalAlignment="Left" Margin="110,-47,10,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Toimipistenimi}" VerticalAlignment="Top" Width="160" Height="20" FontWeight="Normal" IsReadOnly="True"/>
+                <TextBox HorizontalAlignment="Left" Margin="110,-22,10,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding MokkiNimi}" VerticalAlignment="Top" Width="160" Height="20" FontWeight="Normal" IsReadOnly="True"/>
+            </StackPanel>
+        </GroupBox>
+
+        <!--asiakkaan tiedot-->
+        <GroupBox Header="ASIAKAS" FontWeight="Bold" Margin="36,158,29,19" FontFamily="Carlito" FontSize="16">
+            <StackPanel Height="131">
+                <Label Content="Asiakastunnus" HorizontalAlignment="Left" Height="26" Width="104" Grid.Row="1" FontWeight="Normal"/>
+                <Label Content="Etunimi" HorizontalAlignment="Left" Height="26" Width="72" Grid.Row="1" FontWeight="Normal"/>
+                <Label Content="Sukunimi" HorizontalAlignment="Left" Height="26" Width="76" Grid.Row="1" FontWeight="Normal"/>
+
+                <TextBox HorizontalAlignment="Left" Margin="110,-74,10,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding AsiakasID}" VerticalAlignment="Top" Width="160" Height="20" FontWeight="Normal" IsReadOnly="True"/>
+                <TextBox HorizontalAlignment="Left" Margin="110,-47,10,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding AEtunimi}" VerticalAlignment="Top" Width="160" Height="20" FontWeight="Normal" IsReadOnly="True"/>
+                <TextBox HorizontalAlignment="Left" Margin="110,-22,10,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding ASukunimi}" VerticalAlignment="Top" Width="160" Height="20" FontWeight="Normal" IsReadOnly="True"/>
+
+                <Label Content="Osoite" HorizontalAlignment="Left" Height="26" Width="85" Grid.Row="1" FontWeight="Normal" Margin="320,-80,10,0" VerticalAlignment="Top"/>
+                <Label Content="Puhelin" HorizontalAlignment="Left" Height="26" Width="72" Grid.Row="1" FontWeight="Normal" Margin="320,-55,10,0" VerticalAlignment="Top"/>
+                <Label Content="Sähköposti" HorizontalAlignment="Left" Height="28" Width="84" Grid.Row="1" FontWeight="Normal" Margin="320,-27,10,0"/>
+
+                <TextBox HorizontalAlignment="Left" Margin="420,-74,10,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding AOsoite}" VerticalAlignment="Top" Width="205" Height="20" FontWeight="Normal" IsReadOnly="True"/>
+                <TextBox HorizontalAlignment="Left" Margin="420,-47,10,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding APuhelin}" VerticalAlignment="Top" Width="205" Height="20" FontWeight="Normal" IsReadOnly="True"/>
+                <TextBox HorizontalAlignment="Left" Margin="420,-22,10,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding ASahkoposti}" Width="205" Height="20" IsReadOnly="True"/>
+            </StackPanel>
+        </GroupBox>
+
+        <!--laskurivit-->
+        <DataGrid Name="dgrows" AutoGenerateColumns="False" Margin="0,304,0,0" Grid.RowSpan="3" FontFamily="Carlito" FontSize="16">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="*" Header="Tuotenimi" Binding="{Binding Tuotenimi}" />
+                <DataGridTextColumn Width="70" Header="Hinta" Binding="{Binding Hinta}" />
+                <DataGridTextColumn Width="60" Header="Määrä" Binding="{Binding Maara}" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Label Content="YHTEENSÄ:" FontFamily="Carlito" FontSize="16" Margin="498,5,0,0" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Top" FontWeight="Bold" Height="26" Width="86"/>
+        <Label  Grid.Row="2" Margin="600,5,0,0" Content="{Binding LopullinenHinta}" FontFamily="Carlito" FontSize="16" VerticalAlignment="Top" Height="26"/>
+    </Grid>
+</Window>

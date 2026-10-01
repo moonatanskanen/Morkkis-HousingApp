@@ -1,0 +1,52 @@
+﻿<Window x:Class="HousingApp.CustomerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HousingApp"
+        mc:Ignorable="d"
+        Title="Asiakkaat" Height="720" Width="1280" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Pictures/transparenttausta.png" />
+        </Grid.Background>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="151*"/>
+            <ColumnDefinition Width="1143*"/>
+        </Grid.ColumnDefinitions>
+        <Rectangle HorizontalAlignment="Center" Height="682" Stroke="Black" Fill="#FFCDEACF" VerticalAlignment="Top" Width="150" Margin="0,22,0,0"/>
+        <StackPanel Grid.ColumnSpan="2">
+            <Menu Height="25" Background="#FF6CAF84">
+                <MenuItem Margin="0,2,0,0">
+                    <MenuItem.Header>
+                        <Image Source="/Invoices/hamburger_menu_picture.jpg" Opacity="0.8" Height="20"/>
+                    </MenuItem.Header>
+                    <MenuItem Header="Tiedot" Click="TiedotClick" FontFamily="Carlito" FontSize="16"/>
+                    <MenuItem Header="Poistu" Click="PoistuClick" FontFamily="Carlito" FontSize="16"/>
+                </MenuItem>
+            </Menu>
+        </StackPanel>
+
+        <Button Content="Valitse asiakas" HorizontalAlignment="Center" Margin="0,51,0,0" VerticalAlignment="Top" Height="28" Width="116" Click="OpenCustomerChooseCustomerWindow" BorderBrush="#FF397352" Background="#FFD3ECDC" FontFamily="Carlito" FontSize="16"/>
+        <Button Content="Tallenna" HorizontalAlignment="Center" Margin="0,117,0,0" VerticalAlignment="Top" Height="28" Width="116" Click="SaveButton" BorderBrush="#FF397352" Background="#FFD3ECDC" FontFamily="Carlito" FontSize="16"/>
+        <Button Content="Uusi asiakas" HorizontalAlignment="Center" Margin="0,84,0,0" VerticalAlignment="Top" Height="28" Width="116" Click="OpenNewCustomerWindow" BorderBrush="#FF397352" Background="#FFD3ECDC" FontFamily="Carlito" FontSize="16"/>
+
+        <Label Content="Etunimi" HorizontalAlignment="Left" Margin="303,235,0,0" VerticalAlignment="Top" Width="104" Height="32" BorderBrush="Black" BorderThickness="1" Grid.Column="1" FontFamily="Carlito" FontSize="16"/>
+        <TextBox x:Name="EtunimiBox" HorizontalAlignment="Left" Margin="462,235,0,0" Text="" VerticalAlignment="Top" Height="32" Width="391" VerticalContentAlignment="Center" MaxLength="30" PreviewTextInput="EtunimiBox_PreviewTextInput" Grid.Column="1" FontFamily="Carlito" FontSize="16"/>
+
+        <Label Content="Sukunimi" HorizontalAlignment="Left" Margin="303,272,0,0" VerticalAlignment="Top" Width="105" Height="32" BorderBrush="Black" BorderThickness="1" Grid.Column="1" FontFamily="Carlito" FontSize="16"/>
+        <TextBox x:Name="SukunimiBox" HorizontalAlignment="Left" Margin="462,272,0,0" Text="" VerticalAlignment="Top" Height="32" Width="391" VerticalContentAlignment="Center" MaxLength="30" PreviewTextInput="SukunimiBox_PreviewTextInput" Grid.Column="1" FontFamily="Carlito" FontSize="16"/>
+
+        <Label Content="Sähköposti" HorizontalAlignment="Left" Margin="302,309,0,0" VerticalAlignment="Top" Width="105" Height="32" BorderBrush="Black" BorderThickness="1" Grid.Column="1" FontFamily="Carlito" FontSize="16"/>
+        <TextBox x:Name="SahkopostiBox" HorizontalAlignment="Left" Margin="462,309,0,0" VerticalAlignment="Top" Height="32" Width="391" Text="" VerticalContentAlignment="Center" MaxLength="50" Grid.Column="1" FontFamily="Carlito" FontSize="16"/>
+
+        <Label Content="Osoite" HorizontalAlignment="Left" Margin="302,346,0,0" VerticalAlignment="Top" Width="105" Height="32" BorderBrush="Black" BorderThickness="1" Grid.Column="1" FontFamily="Carlito" FontSize="16"/>
+        <TextBox x:Name="OsoiteBox" HorizontalAlignment="Left" Margin="462,346,0,0" VerticalAlignment="Top" Height="32" Width="391" Text="" VerticalContentAlignment="Center" MaxLength="50" Grid.Column="1" FontFamily="Carlito" FontSize="16"/>
+
+        <Label Content="Puhelin" HorizontalAlignment="Left" Margin="302,383,0,0" VerticalAlignment="Top" Width="105" Height="32" BorderBrush="Black" BorderThickness="1" Grid.Column="1" FontFamily="Carlito" FontSize="16"/>
+        <TextBox x:Name="PuhelinBox" HorizontalAlignment="Left" Margin="462,383,0,0" VerticalAlignment="Top" Height="32" Width="391" Text="" VerticalContentAlignment="Center" MaxLength="15" PreviewTextInput="PuhelinBox_PreviewTextInput" Grid.Column="1" FontFamily="Carlito" FontSize="16"/>
+
+        <Image Source="/Pictures/morkkislogotransparent.png" Grid.Row="1" Margin="10,10,10,10" VerticalAlignment="Bottom"/>
+    </Grid>
+</Window>

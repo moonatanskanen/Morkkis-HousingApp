@@ -1,0 +1,3 @@
+SQL tiedosto siirrettävä ohjelman luoman .exe sijaintiin.
+
+HousingApp\bin\Debug\net8.0-windows\...

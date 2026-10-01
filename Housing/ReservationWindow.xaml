@@ -1,0 +1,55 @@
+﻿<Window x:Class="HousingApp.ReservationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HousingApp"
+        mc:Ignorable="d"
+        Title="Varausten hallinta" Height="720" Width="1280" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Pictures/transparenttausta.png" />
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="339*"/>
+            <ColumnDefinition Width="827*"/>
+            <ColumnDefinition Width="114*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="396*"/>
+            <RowDefinition Height="273*"/>
+        </Grid.RowDefinitions>
+        
+        <Rectangle HorizontalAlignment="Left" Height="682" Margin="0,24,0,0" Stroke="Black" Fill="#FFCDEACF" VerticalAlignment="Top" Width="165" Grid.RowSpan="3"/>
+        
+        <StackPanel  Grid.ColumnSpan="3">
+            <Menu Height="25" Background="#FF6CAF84">
+                <MenuItem Margin="0,2,0,0">
+                    <MenuItem.Header>
+                        <Image Source="/Invoices/hamburger_menu_picture.jpg" Opacity="0.8" Height="20"/>
+                    </MenuItem.Header>
+                    <MenuItem Header="Tiedot" Click="TiedotClick" FontFamily="Carlito" FontSize="16"/>
+                    <MenuItem Header="Apua" Click="ShowInfoMessage" FontFamily="Carlito" FontSize="16"/>
+                </MenuItem>
+            </Menu>
+        </StackPanel>
+
+        <!--Kalenterin toiminnalliset jutut-->
+        <Grid Grid.Column="1" Grid.Row="1" x:Name="GridCalendar"/>
+        <Button Grid.Column="1" Content="Edellinen" HorizontalAlignment="Left" Margin="105,25,0,0" Grid.Row="2" VerticalAlignment="Top" Width="150" FontFamily="Carlito" FontSize="16" Height="30" BorderBrush="#FF397352" Background="#FFD3ECDC" Click="PreviousMonth" />
+        <Button Grid.Column="1" Content="Seuraava" HorizontalAlignment="Right" Margin="0,25,105,0" Grid.Row="2" VerticalAlignment="Top" Width="150" FontFamily="Carlito" FontSize="16" Height="30" BorderBrush="#FF397352" Background="#FFD3ECDC" Click="NextMonth" />
+        <Label Grid.Column="1" Content="{Binding DateString}" HorizontalAlignment="Center" Margin="0,15,0,0" Grid.Row="2" VerticalAlignment="Top" FontSize="30" FontFamily="Carlito"/>
+
+
+        <!--Ulkonäkö juttuja-->
+        
+        <Button Content="Uusi varaus" HorizontalAlignment="Left" Margin="8,10,0,0" VerticalAlignment="Top" Width="150" FontFamily="Carlito" FontSize="16" Height="30" BorderBrush="#FF397352" Background="#FFD3ECDC" Click="OpenAddReservationWindow" Grid.Row="1"/>
+        <Button Content="Muuta varausta" HorizontalAlignment="Left" Margin="8,45,0,0" VerticalAlignment="Top" Width="150" FontFamily="Carlito" FontSize="16" Height="30" BorderBrush="#FF397352" Background="#FFD3ECDC" Click="OpenChangeReservationWindow" Grid.Row="1"/>
+        <Button Content="Peru varaus" HorizontalAlignment="Left" Margin="8,80,0,0" VerticalAlignment="Top" Width="150" FontFamily="Carlito" FontSize="16" Height="30" BorderBrush="#FF397352" Background="#FFD3ECDC" Click="OpenCancelReservationWindow" Grid.Row="1"/>
+        <Button Content="Poistu" HorizontalAlignment="Left" Margin="8,137,0,0" VerticalAlignment="Top" Width="150" FontFamily="Carlito" FontSize="16" Height="30" BorderBrush="#FF397352" Background="#FFD3ECDC" Click="CloseWindow" Grid.Row="1"/>
+
+        <Image Source="/Pictures/morkkislogotransparent.png" Grid.Row="2" Margin="8,0,183,10" VerticalAlignment="Bottom" Height="123"/>
+
+    </Grid>
+</Window>

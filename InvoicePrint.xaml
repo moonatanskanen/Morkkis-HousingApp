@@ -1,0 +1,132 @@
+﻿<Window x:Class="HousingApp.InvoicePrint"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HousingApp"
+        mc:Ignorable="d"
+        Title="Paperilasku" Height="29.7cm" Width="21cm" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="272"></RowDefinition>
+            <RowDefinition Height="653"></RowDefinition>
+            <RowDefinition Height="182"></RowDefinition>
+
+        </Grid.RowDefinitions>
+
+
+        <Canvas>
+            <Rectangle Height="178" Canvas.Left="483" Fill="LightSteelBlue" Canvas.Top="84" Width="289"/>
+
+            <!--<Image Source="/Pictures/MörkkisKuva.png" Height="100" Width="239" Canvas.Top="13" Canvas.Left="15" /> -->
+
+            <!-- Asiakkaan tiedot -->
+            <StackPanel Grid.Row="0" Height="149" Canvas.Left="15" Canvas.Top="113" Width="229" HorizontalAlignment="Left" VerticalAlignment="Center" >
+                <Label Content="{Binding FullName}"/>
+                <Label Content="{Binding Address}"/>
+            </StackPanel>
+
+            <!-- Village people tiedot -->
+            <StackPanel Grid.Row="0" Canvas.Left="268" Height="89" Canvas.Top="18" Width="158" >
+                <Label Content="Village People Oy" FontWeight="Bold"/>
+                <Label Content="Karjalankatu 3"/>
+                <Label Content="80200 JOENSUU"/>
+
+            </StackPanel>
+
+
+            <!-- laskun tiedot -->
+            <StackPanel Canvas.Left="500" HorizontalAlignment="Center" Height="163" Canvas.Top="93" VerticalAlignment="Top">
+                <Label Content="Päivämäärä"/>
+                <Label Content="Laskun numero"/>
+                <Label Content="Asiakkaan numero"/>
+                <Label Content="Eräpäivä"/>
+                <Label Content="Huomautusaika"/>
+                <Label Content="Viivästyskorko"/>
+
+            </StackPanel>
+
+            <Label Content="LASKU" RenderTransformOrigin="1.147,0.541" Canvas.Left="500" Canvas.Top="18" Height="30" Width="80" FontWeight="Bold" FontSize="16"/>
+
+            <!-- laskun tiedot bindingit -->
+            <StackPanel Canvas.Left="652" HorizontalAlignment="Left" Height="163" Canvas.Top="93" VerticalAlignment="Center" Width="120">
+                <Label Content="{Binding Date}" ContentStringFormat="dd-MM-yyyy"/>
+                <Label Content="{Binding InvoiceID}"/>
+                <Label Content="{Binding CustomerID}"/>
+                <Label Content="{Binding DueDate}" ContentStringFormat="dd-MM-yyyy"/>
+                <Label Content="7 vrk"/>
+                <Label Content="200 %"/>
+            </StackPanel>
+
+            <Image Source="/Pictures/MörkkisKuva.png" Height="100" Width="239" Canvas.Top="13" Canvas.Left="15" />
+
+        </Canvas>
+
+
+        <!-- Laskurivit -->
+
+        <Canvas Grid.Row="1">
+            <Border Width="774" Background="Black" Height="2" Canvas.Left="10" Canvas.Top="2" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Label Content="Nimi" Canvas.Left="10" Canvas.Top="23" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold"/>
+            <Label Content="Tuotenumero" Canvas.Left="202" Canvas.Top="23" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label Content="Määrä" Canvas.Left="375" Canvas.Top="23" FontWeight="Bold"/>
+            <Label Content="Hinta" Canvas.Left="527" Canvas.Top="23" FontWeight="Bold"/>
+            <Label Content="Yhteishinta" Canvas.Left="653" Canvas.Top="23" FontWeight="Bold" />
+
+            <Border Width="724" Background="Black" Height="2" Canvas.Left="10"  Canvas.Top="445" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Label Content="Maksettavaa yhteensä €" Canvas.Left="397" Canvas.Top="452" FontWeight="Bold" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Label Content="{Binding TotalPrice}" Canvas.Left="613" Canvas.Top="452" HorizontalAlignment="Center" FontWeight="Bold" FontSize="16" Width="121" VerticalAlignment="Top"/>
+
+            <!-- Laskurivi Grid -->
+            <Grid x:Name="InvoiceRowsGrid" Canvas.Left="10" Canvas.Top="49" HorizontalAlignment="Center" VerticalAlignment="Center" Width="774">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="35"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="192"/>
+                    <ColumnDefinition Width="172"/>
+                    <ColumnDefinition Width="153*"/>
+                    <ColumnDefinition Width="128*"/>
+                    <ColumnDefinition Width="129*"/>
+                </Grid.ColumnDefinitions>
+
+            </Grid>
+
+        </Canvas>
+
+        <!-- Maksutiedot -->
+
+        <Canvas Grid.Row="2">
+            <Border Width="774" Background="Black" Height="2" Canvas.Left="10" Canvas.Top="2"/>
+
+            <Label Content="Maksutiedot" Canvas.Left="20" Canvas.Top="19" Width="114" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16"/>
+
+            <Label Content="Tilinumero" Canvas.Left="226" Canvas.Top="35" Width="76"/>
+            <Label Content="FI34 4832 0920 1930 14" Canvas.Left="226" Canvas.Top="61" Height="32" Width="292" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18"/>
+
+            <Label Content="Viitenumero" Canvas.Left="226" Canvas.Top="98" Height="29" Width="79"/>
+            <Label Content="1234567890" Canvas.Left="226" Canvas.Top="127" Height="34" Width="171" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+
+            <Label Content="Eräpäivä" Canvas.Left="518" Canvas.Top="35" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Label Content="{Binding DueDate}" ContentStringFormat="dd-MM-yyyy" Canvas.Left="518" Canvas.Top="60" FontSize="16" Height="34" Width="151" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+
+
+
+
+
+
+
+
+        </Canvas>
+    </Grid>
+</Window>

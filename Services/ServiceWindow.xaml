@@ -1,0 +1,75 @@
+﻿<Window x:Class="HousingApp.ServiceWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HousingApp"
+        mc:Ignorable="d"
+        Title="Toimipisteen palvelut" Height="720" Width="1280"      
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+
+    <!--Määritellään kaksi riviä. Yläosa listalle ja alaosa napille-->
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Pictures/transparenttausta.png" />
+        </Grid.Background>
+
+        <Rectangle Height="682" Stroke="Black" Fill="#FFCDEACF" VerticalAlignment="Top" Width="165" Margin="0,22,1115,0"/>
+        <StackPanel Grid.ColumnSpan="2">
+            <Menu Height="25" Background="#FF6CAF84">
+                <MenuItem Margin="0,2,0,0">
+                    <MenuItem.Header>
+                        <Image Source="/Invoices/hamburger_menu_picture.jpg" Opacity="0.8" Height="20"/>
+                    </MenuItem.Header>
+                    <MenuItem Header="Tiedot" Click="TiedotClick" FontFamily="Carlito" FontSize="16"/>
+                </MenuItem>
+            </Menu>
+        </StackPanel>
+
+        <Grid Margin="200,30,20,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!--Lisätään scrollbar listaa varten-->
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <!--Listataan kaikki palvelut allekkain -->
+                <ItemsControl x:Name="ServiceList" Margin="0,0,0,20">
+
+                    <!--Palvelurivin määrittely-->
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+
+                            <!--Kehys rivien ympärille-->
+                            <Border BorderThickness="1" BorderBrush="Gray" Margin="2" Padding="8" Background="LightGray">
+                                <DockPanel>
+
+                                    <Button Content="Poista" FontFamily="Carlito" FontSize="16" Width="100" DockPanel.Dock="Right" 
+                                Margin="5,0,0,0" Padding="4" 
+                                Click="DeleteService_Click"/>
+
+                                    <!--Palvelun nimi (Tietokannassa olevan palvelun nimeä ei voi jälkikäteen muuttaa)-->
+                                    <TextBox PreviewTextInput="OnlyLetters" MaxLength="30" FontFamily="Carlito" FontSize="16" Text="{Binding ServiceName, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" 
+                                         IsReadOnly="{Binding IsExisting}" Width="200"/>
+
+                                    <!--Palvelun hinta-->
+                                    <TextBox PreviewTextInput="OnlyNumbers" FontFamily="Carlito" FontSize="16" Text="{Binding ServicePrice, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"
+                                  Width="100" HorizontalAlignment="Center"/>
+                                </DockPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </Grid>
+        <!--Tallenna/sulje nappi-->
+        <Button Content="Tallenna ja sulje" FontFamily="Carlito" FontSize="16" BorderBrush="#FF397352" Background="#FFD3ECDC"  Click="Save_Click" Margin="756,610,376,32" />
+
+        <!--Lisää palvelu nappi-->
+        <Button Content="Lisää palvelu" FontFamily="Carlito" FontSize="16" BorderBrush="#FF397352" Background="#FFD3ECDC" Click="AddNewService_Click" Margin="545,610,581,32"/>
+        <Image Source="/Pictures/morkkislogotransparent.png" Margin="10,0,1121,10" VerticalAlignment="Bottom" Height="53"/>
+    </Grid>
+</Window>
+    

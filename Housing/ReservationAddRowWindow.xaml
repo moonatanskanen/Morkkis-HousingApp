@@ -1,0 +1,22 @@
+﻿<Window x:Class="HousingApp.ReservationAddRowWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HousingApp"
+        mc:Ignorable="d"
+        Title="Rivin lisäys" Height="250" Width="200" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+
+    <Grid>
+
+        <Label Content="Tuote" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" FontFamily="Carlito"/>
+        <ComboBox HorizontalAlignment="Center" Margin="0,40,0,0" VerticalAlignment="Top" Width="120" Name="ProductBox" DisplayMemberPath="Name" FontFamily="Carlito" FontSize="16" BorderBrush="DarkGreen"/>
+
+        <Label Content="Määrä" HorizontalAlignment="Center" Margin="0,75,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" FontFamily="Carlito"/>
+        <TextBox HorizontalAlignment="Center" HorizontalContentAlignment="Center" TextWrapping="Wrap" Text="{Binding Amount}" VerticalAlignment="Top" Width="120" FontSize="16" FontFamily="Carlito" Margin="0,105,0,0" BorderBrush="DarkGreen"/>
+
+        <Button Content="Hyväksy" HorizontalAlignment="Left" Margin="22,160,0,0" VerticalAlignment="Top" Click="AcceptNewRow" FontFamily="Carlito" FontSize="16" Height="23" BorderBrush="#FF397352" Background="#FFD3ECDC" Width="62"/>
+        <Button Content="Peruuta" HorizontalAlignment="Right" Margin="0,160,22,0" VerticalAlignment="Top" Click="DiscardNewRow" FontFamily="Carlito" FontSize="16" Height="23" BorderBrush="#FF397352" Background="#FFD3ECDC" Width="62" />
+
+    </Grid>
+</Window>

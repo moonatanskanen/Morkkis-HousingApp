@@ -1,0 +1,16 @@
+﻿<Window x:Class="HousingApp.AikaIkkuna"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HousingApp"
+        mc:Ignorable="d"
+        Title="Syötä päivämäärät" Height="200" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid>
+        <Label Content="Alku:" HorizontalAlignment="Left" Margin="54,40,0,0" VerticalAlignment="Top" FontFamily="Carlito" FontSize="16"/>
+        <Label Content="Loppu:" HorizontalAlignment="Left" Margin="227,40,0,0" VerticalAlignment="Top" FontFamily="Carlito" FontSize="16"/>
+        <Button Content="Hae" HorizontalAlignment="Left" Margin="283,99,0,0" VerticalAlignment="Top" Width="65" Click="HaeClick" FontFamily="Carlito" FontSize="14"/>
+        <DatePicker Name="alkupaiva" HorizontalAlignment="Left" Margin="58,64,0,0" VerticalAlignment="Top" FontFamily="Carlito" FontSize="16"/>
+        <DatePicker Name="loppupaiva" HorizontalAlignment="Left" Margin="231,64,0,0" VerticalAlignment="Top" FontFamily="Carlito" FontSize="16"/>
+    </Grid>
+</Window>

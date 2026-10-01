@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>Pictures\morkkisicon.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Invoices\hamburger_menu_picture.jpg" />
+    <None Remove="Pictures\morkkislogotransparent.png" />
+    <None Remove="Pictures\morkkismokit.png" />
+    <None Remove="Pictures\morokkis.png" />
+    <None Remove="Pictures\MörkkisKuva.png" />
+    <None Remove="Pictures\transparenttausta.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Pictures\morkkisicon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MySql.Data" Version="9.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Invoices\hamburger_menu_picture.jpg" />
+    <Resource Include="Pictures\morkkislogotransparent.png" />
+    <Resource Include="Pictures\morkkismokit.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pictures\morokkis.png" />
+    <Resource Include="Pictures\MörkkisKuva.png" />
+    <Resource Include="Pictures\transparenttausta.png" />
+  </ItemGroup>
+
+</Project>
