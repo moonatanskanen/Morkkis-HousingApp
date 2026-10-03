@@ -1,4 +1,4 @@
-#Mörkkis HousingApp
+# Mörkkis HousingApp
 Mörkkis project was our first big project during the first year of studies. I was a developer in this project with 4 other students.
 Mörkkis was made for a software production course where the main focus was to build an application using waterfall model.
 Our project was graded 5/5.
